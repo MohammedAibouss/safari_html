@@ -1,0 +1,2569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Travel Genius - صمم رحلتك المثالية إلى المغرب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #4D44DB;
+            --secondary: #FF6584;
+            --accent: #00BFA6;
+            --light: #F8F9FA;
+            --dark: #343A40;
+            --gray: #6C757D;
+            --success: #28A745;
+            --warning: #FFC107;
+            --danger: #DC3545;
+            --border-radius: 16px;
+            --box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), 
+                        url('https://images.unsplash.com/photo-1518544866330-95a2bfb1ad48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(108, 99, 255, 0.3), rgba(0, 191, 166, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: fadeIn 1.5s ease;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 191, 166, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: #00a58e;
+            box-shadow: 0 10px 25px rgba(0, 191, 166, 0.5);
+        }
+
+        /* Quiz Container */
+        .quiz-section {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .quiz-container {
+            display: none;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin: 0 auto;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .quiz-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .progress-container {
+            margin-bottom: 40px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.6s ease;
+            border-radius: 10px;
+        }
+
+        .question {
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .option {
+            background-color: var(--light);
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 25px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .option.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        .option-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .option i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .option.selected i {
+            color: white;
+        }
+
+        .option-text {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .multi-select-option {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            background-color: var(--light);
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .multi-select-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .multi-select-option.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .multi-select-option .checkmark {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .multi-select-option.selected .checkmark {
+            background-color: white;
+            border-color: white;
+            position: relative;
+        }
+
+        .multi-select-option.selected .checkmark::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prev-btn {
+            background-color: #f0f0f0;
+            color: var(--dark);
+        }
+
+        .prev-btn:hover {
+            background-color: #e0e0e0;
+            transform: translateX(-5px);
+        }
+
+        .next-btn {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .next-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 191, 166, 0.3);
+        }
+
+        .submit-btn:hover {
+            background-color: #00a58e;
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 191, 166, 0.4);
+        }
+
+        /* Results Container */
+        .results-container {
+            display: none;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 50px;
+            margin: 0 auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .results-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trip-summary {
+            background: linear-gradient(135deg, #f9f9ff 0%, #f0f5ff 100%);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+
+        .trip-summary h3 {
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .trip-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .detail-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-card h4 i {
+            font-size: 1.2rem;
+        }
+
+        .detail-card p {
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .itinerary {
+            margin-bottom: 50px;
+        }
+
+        .itinerary h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .day-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .day-card h3 .day-number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .day-card p {
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .activity {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .activity-time {
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 100px;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .activity-time .time-icon {
+            background-color: rgba(108, 99, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .activity-details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .activity-details h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .activity-details p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .activity-image {
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .activity-image:hover {
+            transform: scale(1.05);
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 50px;
+            background-color: #eee;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .resources {
+            margin-bottom: 50px;
+        }
+
+        .resources h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .resource-card h4 i {
+            font-size: 1.5rem;
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .resource-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            border-radius: 50px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .resource-card a:hover {
+            background-color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .download-btn {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        .share-btn {
+            background-color: #4267B2;
+            color: white;
+            box-shadow: 0 5px 15px rgba(66, 103, 178, 0.3);
+        }
+
+        .share-btn:hover {
+            background-color: #365899;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(66, 103, 178, 0.4);
+        }
+
+        .restart-btn {
+            background-color: var(--light);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .restart-btn:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 191, 166, 0.1) 100%);
+            z-index: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .quiz-container, .results-container {
+                padding: 30px;
+            }
+            
+            .activity {
+                flex-direction: column;
+            }
+            
+            .activity-time {
+                flex-direction: row;
+                min-width: auto;
+                margin-bottom: 15px;
+                gap: 15px;
+            }
+            
+            .activity-time .time-icon {
+                margin-bottom: 0;
+            }
+            
+            .activity-image {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+            
+            .quiz-header h2, .results-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-btn, .action-btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .trip-details, .resource-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            .quiz-container, .results-container {
+                padding: 25px 20px;
+                border-radius: 10px;
+            }
+            
+            .quiz-header h2, .results-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .question h3 {
+                font-size: 1.3rem;
+            }
+            
+            .option {
+                padding: 20px 15px;
+            }
+            
+            .day-card {
+                padding: 25px 20px;
+            }
+            
+            .detail-card, .resource-card {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-spinner {
+            width: 70px;
+            height: 70px;
+            border: 8px solid rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Elements */
+        .floating-element-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-element-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark) transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .weather-icon {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .weather-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .weather-details {
+            display: flex;
+            gap: 15px;
+            color: var(--gray);
+        }
+
+        /* Packing List */
+        .packing-list {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .packing-list h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .packing-list ul {
+            list-style: none;
+            columns: 2;
+        }
+
+        .packing-list li {
+            margin-bottom: 10px;
+            padding-right: 15px;
+            position: relative;
+        }
+
+        .packing-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            right: 0;
+        }
+
+        /* Budget Calculator */
+        .budget-calculator {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .budget-calculator h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .budget-total {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 50px 0;
+        }
+
+        .testimonials h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+        }
+
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .language-btn {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50px;
+            padding: 8px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">نحضر رحلتك المثالية...</div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="language-btn">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>صمم رحلتك المثالية إلى المغرب</h1>
+            <p>أجوبة بسيطة.. برنامج سفر مخصص.. تجربة لا تنسى</p>
+            <a href="#" class="btn" id="start-btn">ابدأ التخطيط الآن</a>
+        </div>
+        <div class="floating-element floating-element-1"></div>
+        <div class="floating-element floating-element-2"></div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-container" id="quiz-container">
+                <div class="quiz-header">
+                    <h2>لنبدأ بتصميم رحلتك</h2>
+                    <p>أجب على هذه الأسئلة وسنقوم بإنشاء برنامج سفر يناسبك تمامًا</p>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div id="question-container"></div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" id="prev-btn" disabled>
+                        <i class="fas fa-arrow-right"></i> السابق
+                    </button>
+                    <button class="nav-btn next-btn" id="next-btn">
+                        التالي <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="nav-btn submit-btn" id="submit-btn">
+                        إنشاء برنامج السفر <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-container" id="results-container">
+                <div class="results-header">
+                    <h2>برنامج سفرك المخصص إلى المغرب</h2>
+                    <p>لقد صممنا لك رحلة تناسب تفضيلاتك تمامًا، استمتع بتجربة لا تنسى!</p>
+                </div>
+                
+                <div class="trip-summary">
+                    <h3>ملخص رحلتك</h3>
+                    <div class="trip-details" id="trip-summary"></div>
+                </div>
+                
+                <!-- Weather Widget -->
+                <div class="weather-widget" id="weather-widget">
+                    <i class="fas fa-sun weather-icon"></i>
+                    <div class="weather-info">
+                        <h4>طقس المغرب</h4>
+                        <div class="weather-details">
+                            <span>25°C - مشمس</span>
+                            <span>الرطوبة: 45%</span>
+                            <span>الرياح: 10 كم/س</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="itinerary" id="itinerary">
+                    <h3>برنامج الرحلة اليومي</h3>
+                    <!-- سيتم ملؤه بواسطة JavaScript -->
+                </div>
+                
+                <!-- Packing List -->
+                <div class="packing-list">
+                    <h3><i class="fas fa-suitcase"></i> قائمة التعبئة المقترحة</h3>
+                    <ul>
+                        <li>ملابس خفيفة للمناخ الدافئ</li>
+                        <li>حذاء مريح للمشي</li>
+                        <li>نظارات شمسية وواقي شمس</li>
+                        <li>كاميرا أو هاتف ذكي للتصوير</li>
+                        <li>محول كهرباء (نوع E/F)</li>
+                        <li>أدوات النظافة الشخصية</li>
+                        <li>حقيبة ظهر صغيرة للجولات</li>
+                        <li>ملابس متواضعة لزيارة الأماكن الدينية</li>
+                    </ul>
+                </div>
+                
+                <!-- Budget Calculator -->
+                <div class="budget-calculator">
+                    <h3><i class="fas fa-calculator"></i> تقدير الميزانية</h3>
+                    <div class="budget-item">
+                        <span>الإقامة (7 ليالي)</span>
+                        <span>2,800 درهم</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>الطعام</span>
+                        <span>1,500 درهم</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>المواصلات</span>
+                        <span>800 درهم</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>الأنشطة</span>
+                        <span>1,200 درهم</span>
+                    </div>
+                    <div class="budget-total">
+                        <span>المجموع التقريبي</span>
+                        <span>6,300 درهم</span>
+                    </div>
+                </div>
+                
+                <div class="map-container" id="map-container">
+                    <iframe id="map-iframe" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                
+                <!-- Testimonials -->
+                <div class="testimonials">
+                    <h3>آراء المسافرين</h3>
+                    <div class="testimonial-cards">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"استخدمت هذا الموقع لتخطيط رحلتي إلى المغرب وكانت تجربة رائعة. كل شيء كان منظمًا بشكل مثالي!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="سارة" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>سارة محمد</h4>
+                                    <p>مسافرة من السعودية</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"أحببت كيف أن البرنامج اليومي كان متناسبًا مع اهتماماتي. اكتشفت أماكن لم أكن أعرف عنها!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="أحمد" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>أحمد خالد</h4>
+                                    <p>مسافر من الإمارات</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"التوصيات كانت ممتازة، خاصة بالنسبة للمطاعم. جربت أفضل الأطباق المغربية بفضل هذا الموقع."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="نور" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>نورا عبدالله</h4>
+                                    <p>مسافرة من الكويت</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources">
+                    <h3>موارد مفيدة لرحلتك</h3>
+                    <div class="resource-cards" id="resources"></div>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#" class="action-btn download-btn" id="download-btn">
+                        <i class="fas fa-download"></i> تنزيل كملف PDF
+                    </a>
+                    <a href="#" class="action-btn share-btn" id="share-btn">
+                        <i class="fas fa-share-alt"></i> مشاركة الرحلة
+                    </a>
+                    <a href="#" class="action-btn restart-btn" id="restart-btn">
+                        <i class="fas fa-redo"></i> تصميم رحلة جديدة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // البيانات الشاملة للبرنامج
+        const appData = {
+            questions: [
+                {
+                    id: 'travelers',
+                    question: 'من سيسافر معك؟',
+                    type: 'single',
+                    options: [
+                        { 
+                            id: 'solo', 
+                            text: 'أنا فقط', 
+                            icon: 'fas fa-user',
+                            image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80'
+                        },
+                        { 
+                            id: 'couple', 
+                            text: 'زوج/زوجة', 
+                            icon: 'fas fa-heart',
+                            image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80'
+                        },
+                        { 
+                            id: 'family', 
+                            text: 'عائلة', 
+                            icon: 'fas fa-users',
+                            image: 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
+                        },
+                        { 
+                            id: 'friends', 
+                            text: 'أصدقاء', 
+                            icon: 'fas fa-user-friends',
+                            image: 'https://images.unsplash.com/photo-1542816417-09836775981e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80'
+                        }
+                    ]
+                },
+                {
+                    id: 'trip-type',
+                    question: 'ما نوع الرحلة التي تفضل؟',
+                    type: 'single',
+                    options: [
+                        { 
+                            id: 'adventure', 
+                            text: 'مغامرة', 
+                            icon: 'fas fa-mountain',
+                            image: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'cultural', 
+                            text: 'ثقافية', 
+                            icon: 'fas fa-landmark',
+                            image: 'https://images.unsplash.com/photo-1553826059-7a090c4bd362?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
+                        },
+                        { 
+                            id: 'relaxation', 
+                            text: 'استرخاء', 
+                            icon: 'fas fa-spa',
+                            image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'mixed', 
+                            text: 'مزيج من كل شيء', 
+                            icon: 'fas fa-blender-phone',
+                            image: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        }
+                    ]
+                },
+                {
+                    id: 'budget',
+                    question: 'ما هي ميزانيتك للرحلة؟',
+                    type: 'single',
+                    options: [
+                        { 
+                            id: 'budget', 
+                            text: 'اقتصادية', 
+                            icon: 'fas fa-coins',
+                            image: 'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'mid-range', 
+                            text: 'متوسطة', 
+                            icon: 'fas fa-wallet',
+                            image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'
+                        },
+                        { 
+                            id: 'luxury', 
+                            text: 'فاخرة', 
+                            icon: 'fas fa-gem',
+                            image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        }
+                    ]
+                },
+                {
+                    id: 'duration',
+                    question: 'كم عدد أيام الإقامة؟',
+                    type: 'single',
+                    options: [
+                        { 
+                            id: '3-5', 
+                            text: '3-5 أيام', 
+                            icon: 'fas fa-calendar-week',
+                            image: 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80'
+                        },
+                        { 
+                            id: '6-8', 
+                            text: '6-8 أيام', 
+                            icon: 'fas fa-calendar-alt',
+                            image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: '9+', 
+                            text: '9 أيام أو أكثر', 
+                            icon: 'fas fa-calendar-plus',
+                            image: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        }
+                    ]
+                },
+                {
+                    id: 'interests',
+                    question: 'ما هي اهتماماتك؟ (اختر ما يناسبك)',
+                    type: 'multi',
+                    options: [
+                        { 
+                            id: 'history', 
+                            text: 'التاريخ والتراث',
+                            image: 'https://images.unsplash.com/photo-1553826059-7a090c4bd362?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
+                        },
+                        { 
+                            id: 'nature', 
+                            text: 'الطبيعة والمناظر',
+                            image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80'
+                        },
+                        { 
+                            id: 'food', 
+                            text: 'المأكولات المحلية',
+                            image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80'
+                        },
+                        { 
+                            id: 'shopping', 
+                            text: 'التسوق',
+                            image: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'adventure', 
+                            text: 'المغامرات',
+                            image: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'beach', 
+                            text: 'الشواطئ والاستجمام',
+                            image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80'
+                        }
+                    ]
+                },
+                {
+                    id: 'activities',
+                    question: 'ما هي الأنشطة التي تفضلها؟ (اختر ما يناسبك)',
+                    type: 'multi',
+                    options: [
+                        { 
+                            id: 'hiking', 
+                            text: 'المشي لمسافات طويلة',
+                            image: 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80'
+                        },
+                        { 
+                            id: 'photography', 
+                            text: 'التصوير الفوتوغرافي',
+                            image: 'https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1492&q=80'
+                        },
+                        { 
+                            id: 'spa', 
+                            text: 'المنتجعات الصحية',
+                            image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'cooking', 
+                            text: 'دورات الطبخ',
+                            image: 'https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        },
+                        { 
+                            id: 'desert', 
+                            text: 'رحلات الصحراء',
+                            image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80'
+                        },
+                        { 
+                            id: 'nightlife', 
+                            text: 'الحياة الليلية',
+                            image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                        }
+                    ]
+                }
+            ],
+            destinations: {
+                marrakech: {
+                    name: "مراكش",
+                    description: "مدينة ساحرة تعرف باسم المدينة الحمراء، تشتهر بساحة جامع الفنا ورياضاتها الفاخرة والحدائق الغناء.",
+                    coordinates: "31.6295,-7.9811",
+                    highlights: [
+                        {
+                            name: "ساحة جامع الفنا",
+                            description: "قلب مراكش النابض بالحياة، مليئة بالرواة، الموسيقيين، وبائعي الطعام.",
+                            image: "https://images.unsplash.com/photo-1573767291321-c0af2eaf5266?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        },
+                        {
+                            name: "حدائق ماجوريل",
+                            description: "واحة من السلام والجمال، صممها الفنان الفرنسي جاك ماجوريل.",
+                            image: "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        },
+                        {
+                            name: "قصر الباهية",
+                            description: "تحفة معمارية تعود إلى القرن التاسع عشر، نموذج رائع للفن المغربي.",
+                            image: "https://images.unsplash.com/photo-1581851517016-06674a9b9b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        }
+                    ],
+                    activities: {
+                        cultural: [
+                            "جولة في المدينة العتيقة مع مرشد محلي",
+                            "زيارة متحف مراكش للفن المعاصر",
+                            "حضور عرض موسيقى غنائية تقليدية"
+                        ],
+                        adventure: [
+                            "رحلة بالون هواء فوق مراكش",
+                            "جولة دراجات في واحة النخيل",
+                            "تسلق جبال الأطلس القريبة"
+                        ],
+                        relaxation: [
+                            "جلسة سبا تقليدية في رياض فاخر",
+                            "اليوغا في حدائق ماجوريل",
+                            "الاسترخاء في حمامات سبا لوكس"
+                        ],
+                        food: [
+                            "جولة طعام في سوق جامع الفنا",
+                            "ورشة طبخ تقليدي مغربي",
+                            "عشاء في مطعم دار موحا الفاخر"
+                        ]
+                    }
+                },
+                fes: {
+                    name: "فاس",
+                    description: "أقدم مدينة إمبراطورية في المغرب، تشتهر بجامعة القرويين العريقة ومدينتها العتيقة التي تعود للقرون الوسطى.",
+                    coordinates: "34.0181,-5.0078",
+                    highlights: [
+                        {
+                            name: "فاس البالي",
+                            description: "أكبر مدينة عتيقة في العالم، متاهة من الأزقة والمباني التاريخية.",
+                            image: "https://images.unsplash.com/photo-1553826059-7a090c4bd362?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+                        },
+                        {
+                            name: "دباغة الشوارة",
+                            description: "دباغات الجلود التقليدية التي تعود للقرون الوسطى، مشهد لا ينسى.",
+                            image: "https://images.unsplash.com/photo-1581851517016-06674a9b9b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        },
+                        {
+                            name: "جامعة القرويين",
+                            description: "أقدم جامعة في العالم، تأسست عام 859 م، تحفة معمارية وتاريخية.",
+                            image: "https://images.unsplash.com/photo-1581851517016-06674a9b9b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        }
+                    ],
+                    activities: {
+                        cultural: [
+                            "جولة في المدارس العتيقة مثل البوعنانية",
+                            "زيارة متحف دار البطحاء",
+                            "ورشة صناعة الفخار التقليدي"
+                        ],
+                        adventure: [
+                            "استكشاف الأزقة السرية مع مرشد محلي",
+                            "رحلة إلى الغابات المحيطة بفاس",
+                            "جولة في الأسواق المخفية"
+                        ],
+                        relaxation: [
+                            "جلسة تدليك بالزيوت العطرية",
+                            "الاسترخاء في رياض تقليدي",
+                            "شاي بالنعناع في مقهى تاريخي"
+                        ],
+                        food: [
+                            "تذوق الكعك التقليدي في حي الأندلس",
+                            "عشاء في مطعم دار التازي",
+                            "جولة تذوق زيت الزيتون المحلي"
+                        ]
+                    }
+                },
+                chefchaouen: {
+                    name: "شفشاون",
+                    description: "المدينة الزرقاء الساحرة في جبال الريف، تشتهر بأزقتها الزرقاء الهادئة ومناظرها الطبيعية الخلابة.",
+                    coordinates: "35.1714,-5.2699",
+                    highlights: [
+                        {
+                            name: "المدينة القديمة الزرقاء",
+                            description: "أزقة مطلية باللون الأزرق، جو رومانسي لا يقاوم.",
+                            image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        },
+                        {
+                            name: "شلالات أقشور",
+                            description: "شلالات خلابة على بعد مسيرة قصيرة من المدينة.",
+                            image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80"
+                        },
+                        {
+                            name: "سوق شفشاون",
+                            description: "سوق تقليدي يقدم منتجات محلية وحرف يدوية فريدة.",
+                            image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        }
+                    ],
+                    activities: {
+                        cultural: [
+                            "جولة تصوير في الأزقة الزرقاء",
+                            "زيارة القلعة الإسبانية القديمة",
+                            "ورشة صناعة الصابون التقليدي"
+                        ],
+                        adventure: [
+                            "مشي في جبال الريف المحيطة",
+                            "رحلة إلى الكهوف القريبة",
+                            "تسلق جبل تيسوكا"
+                        ],
+                        relaxation: [
+                            "شاي بالنعناع في مقهى مع إطلالة",
+                            "اليوغا عند غروب الشمس",
+                            "قراءة كتاب في ساحة وطاء الحمام"
+                        ],
+                        food: [
+                            "تذوق الجبن المحلي المشهور",
+                            "عشاء في مطعم مع إطلالة بانورامية",
+                            "جولة تذوق زيت الزيتون العضوي"
+                        ]
+                    }
+                },
+                desert: {
+                    name: "الصحراء المغربية",
+                    description: "تجربة لا تنسى في بحر الرمال العظيم مع رحلات الجمال والمبيت في الخيام البدوية تحت النجوم الساطعة.",
+                    coordinates: "31.0833,-4.0333",
+                    highlights: [
+                        {
+                            name: "مرزوكة",
+                            description: "بحيرة رملية ساحرة وكثبان ذهبية شاهقة.",
+                            image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80"
+                        },
+                        {
+                            name: "وادي درعة",
+                            description: "واحة خضراء في قلب الصحراء، مشهد مذهل للتضاريس المتغيرة.",
+                            image: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                        },
+                        {
+                            name: "غروب الشمس الصحراوي",
+                            description: "مشهد غروب الشمس على الكثبان الرملية، تجربة ساحرة.",
+                            image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80"
+                        }
+                    ],
+                    activities: {
+                        cultural: [
+                            "زيارة قرى بربرية تقليدية",
+                            "حفل موسيقى صحراوية حول النار",
+                            "تعلم الثقافة البدوية"
+                        ],
+                        adventure: [
+                            "رحلة جمال عند الغروب",
+                            "تزلج على الرمال",
+                            "رحلة سيارات رباعية في الصحراء"
+                        ],
+                        relaxation: [
+                            "التأمل تحت النجوم",
+                            "النوم في خيمة فاخرة تحت السماء",
+                            "جلسة شاي بدوي تقليدي"
+                        ],
+                        food: [
+                            "عشاء بدوي تقليدي تحت النجوم",
+                            "تذوق خبز الرمال",
+                            "شاي بالنعناع مع التمور"
+                        ]
+                    }
+                },
+                agadir: {
+                    name: "أغادير",
+                    description: "مدينة ساحلية تشتهر بشواطئها الذهبية الطويلة ومناخها المعتدل على مدار العام، وجهة مثالية للاسترخاء.",
+                    coordinates: "30.4278,-9.5981",
+                    highlights: [
+                        {
+                            name: "شاطئ أغادير",
+                            description: "شاطئ ذهبي بطول 10 كم، مثالي للاسترخاء وممارسة الرياضات المائية.",
+                            image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80"
+                        },
+                        {
+                            name: "وادي الطيور",
+                            description: "حديقة حيوانات صغيرة وحدائق نباتية جميلة في قلب المدينة.",
+                            image: "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        },
+                        {
+                            name: "ميناء الصيد",
+                            description: "مكان رائع لمشاهدة الصيادين العائدين بغنائمهم وتذوق المأكولات البحرية الطازجة.",
+                            image: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        }
+                    ],
+                    activities: {
+                        cultural: [
+                            "زيارة قصبة أغادير أوفلا التاريخية",
+                            "جولة في سوق الأحد التقليدي",
+                            "زيارة متحف التراث الأمازيغي"
+                        ],
+                        adventure: [
+                            "رياضات مائية مثل التزلج على الماء",
+                            "رحلة بحرية لمشاهدة الدلافين",
+                            "جولة في جبال الأطلس القريبة"
+                        ],
+                        relaxation: [
+                            "جلسة مساج على الشاطئ",
+                            "اليوغا عند شروق الشمس",
+                            "الاسترخاء في منتجع صحي فاخر"
+                        ],
+                        food: [
+                            "تذوق المأكولات البحرية الطازجة",
+                            "عشاء رومانسي على الشاطئ",
+                            "جولة تذوق في المطاعم المحلية"
+                        ]
+                    }
+                }
+            },
+            restaurants: {
+                budget: [
+                    {
+                        name: "مطعم الشارع المحلي",
+                        description: "تجربة أكلات شعبية أصلية بأسعار معقولة",
+                        type: "مغربي تقليدي"
+                    },
+                    {
+                        name: "مقهى السوق",
+                        description: "مكان محلي لتجربة الشاي المغربي والوجبات الخفيفة",
+                        type: "مقهى تقليدي"
+                    },
+                    {
+                        name: "مطعم عائلي صغير",
+                        description: "وجبات منزلية تحضرها عائلات محلية",
+                        type: "وجبات منزلية"
+                    }
+                ],
+                midrange: [
+                    {
+                        name: "مطعم المدينة",
+                        description: "مطعم أنيق يقدم مأكولات مغربية وعالمية",
+                        type: "مغربي/عالمي"
+                    },
+                    {
+                        name: "مطعم السوق المركزي",
+                        description: "يقدم أفضل المأكولات المحلية في جو حيوي",
+                        type: "مغربي تقليدي"
+                    },
+                    {
+                        name: "مطعم السياح الجيد",
+                        description: "يجمع بين الأصالة والراحة للزوار",
+                        type: "مغربي معدل"
+                    }
+                ],
+                luxury: [
+                    {
+                        name: "مطعم دار موحا",
+                        description: "تجربة طعام فاخرة في قصر تقليدي",
+                        type: "مغربي فاخر"
+                    },
+                    {
+                        name: "مطعم لا مامونيا",
+                        description: "مطعم حائز على جوائز في فندق فاخر",
+                        type: "فرنسي/مغربي"
+                    },
+                    {
+                        name: "مطعم شرفة الأطلس",
+                        description: "إطلالات بانورامية مع مأكولات مبتكرة",
+                        type: "عصري مغربي"
+                    }
+                ]
+            },
+            accommodations: {
+                budget: [
+                    {
+                        name: "رياض تقليدي",
+                        description: "بيوت ضيافة مغربية تقليدية بأسعار معقولة",
+                        type: "بيت ضيافة"
+                    },
+                    {
+                        name: "نزل اقتصادي",
+                        description: "غرف نظيفة وبسيطة في مواقع مركزية",
+                        type: "نزل"
+                    },
+                    {
+                        name: "شقة صغيرة",
+                        description: "شقق مفروشة للإيجار اليومي",
+                        type: "شقة"
+                    }
+                ],
+                midrange: [
+                    {
+                        name: "فندق 3-4 نجوم",
+                        description: "فنادق مريحة مع مرافق جيدة",
+                        type: "فندق"
+                    },
+                    {
+                        name: "رياض متوسط",
+                        description: "رياضات تقليدية مع خدمات محسنة",
+                        type: "بيت ضيافة"
+                    },
+                    {
+                        name: "شقة فندقية",
+                        description: "شقق مع خدمات الفندق",
+                        type: "شقة فندقية"
+                    }
+                ],
+                luxury: [
+                    {
+                        name: "فندق 5 نجوم",
+                        description: "فنادق فاخرة مع جميع المرافق",
+                        type: "فندق فاخر"
+                    },
+                    {
+                        name: "رياض فاخر",
+                        description: "قصور تقليدية مجددة بخدمات فاخرة",
+                        type: "فيلا فاخرة"
+                    },
+                    {
+                        name: "منتجع صحي",
+                        description: "منتجعات متكاملة مع سبا ومرافق ترفيهية",
+                        type: "منتجع"
+                    }
+                ]
+            },
+            resources: [
+                {
+                    title: "دليل السفر إلى المغرب",
+                    description: "دليل شامل لكل ما تحتاج معرفته قبل السفر إلى المغرب",
+                    icon: "fas fa-book",
+                    link: "#",
+                    linkText: "تصفح الدليل"
+                },
+                {
+                    title: "تأشيرات المغرب",
+                    description: "كل المعلومات عن متطلبات التأشيرة للدخول إلى المغرب",
+                    icon: "fas fa-passport",
+                    link: "#",
+                    linkText: "تعرف على المتطلبات"
+                },
+                {
+                    title: "حزم السفر الخاصة بنا",
+                    description: "عروض حصرية لرحلات منظمة إلى المغرب",
+                    icon: "fas fa-suitcase-rolling",
+                    link: "#",
+                    linkText: "استعرض العروض"
+                },
+                {
+                    title: "نصائح السفر الآمن",
+                    description: "كيف تسافر بأمان وتتجنب المشاكل الشائعة",
+                    icon: "fas fa-shield-alt",
+                    link: "#",
+                    linkText: "تعلم النصائح"
+                }
+            ],
+            testimonials: [
+                {
+                    text: "استخدمت هذا الموقع لتخطيط رحلتي إلى المغرب وكانت تجربة رائعة. كل شيء كان منظمًا بشكل مثالي!",
+                    author: "سارة محمد",
+                    location: "السعودية",
+                    avatar: "https://randomuser.me/api/portraits/women/32.jpg"
+                },
+                {
+                    text: "أحببت كيف أن البرنامج اليومي كان متناسبًا مع اهتماماتي. اكتشفت أماكن لم أكن أعرف عنها!",
+                    author: "أحمد خالد",
+                    location: "الإمارات",
+                    avatar: "https://randomuser.me/api/portraits/men/45.jpg"
+                },
+                {
+                    text: "التوصيات كانت ممتازة، خاصة بالنسبة للمطاعم. جربت أفضل الأطباق المغربية بفضل هذا الموقع.",
+                    author: "نورا عبدالله",
+                    location: "الكويت",
+                    avatar: "https://randomuser.me/api/portraits/women/68.jpg"
+                }
+            ]
+        };
+
+        // عناصر DOM
+        const loader = document.getElementById('loader');
+        const startBtn = document.getElementById('start-btn');
+        const heroSection = document.getElementById('hero');
+        const quizContainer = document.getElementById('quiz-container');
+        const questionContainer = document.getElementById('question-container');
+        const progressBar = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const tripSummary = document.getElementById('trip-summary');
+        const itinerary = document.getElementById('itinerary');
+        const mapIframe = document.getElementById('map-iframe');
+        const resourcesContainer = document.getElementById('resources');
+        const downloadBtn = document.getElementById('download-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const backToTopBtn = document.getElementById('back-to-top');
+        const weatherWidget = document.getElementById('weather-widget');
+        const languageBtn = document.querySelector('.language-btn');
+
+        // حالة التطبيق
+        let currentQuestion = 0;
+        let answers = {};
+        let selectedOptions = {};
+        let tripPlan = {};
+
+        // تهيئة التطبيق
+        function initApp() {
+            // إخفاء loader بعد تحميل كل شيء
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 1500);
+            
+            // تعيين مستمعي الأحداث
+            startBtn.addEventListener('click', startQuiz);
+            prevBtn.addEventListener('click', prevQuestion);
+            nextBtn.addEventListener('click', nextQuestion);
+            submitBtn.addEventListener('click', submitQuiz);
+            downloadBtn.addEventListener('click', downloadItinerary);
+            shareBtn.addEventListener('click', shareItinerary);
+            restartBtn.addEventListener('click', restartQuiz);
+            languageBtn.addEventListener('click', toggleLanguage);
+            
+            // Back to top button
+            window.addEventListener('scroll', toggleBackToTop);
+            backToTopBtn.addEventListener('click', scrollToTop);
+            
+            // Simulate weather data
+            updateWeatherWidget();
+        }
+
+        // بدء الاختبار
+        function startQuiz() {
+            heroSection.style.display = 'none';
+            quizContainer.style.display = 'block';
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+            
+            // Scroll to quiz section smoothly
+            setTimeout(() => {
+                quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // عرض السؤال الحالي
+        function showQuestion() {
+            const question = appData.questions[currentQuestion];
+            let questionHTML = `
+                <div class="question" data-question-id="${question.id}">
+                    <h3>${question.question}</h3>
+                    <div class="options">
+            `;
+
+            if (question.type === 'single') {
+                question.options.forEach((option) => {
+                    const isSelected = answers[question.id] === option.id;
+                    questionHTML += `
+                        <div class="option ${isSelected ? 'selected' : ''}" data-option-id="${option.id}">
+                            ${option.image ? `<img src="${option.image}" alt="${option.text}" class="option-image">` : ''}
+                            ${option.icon ? `<i class="${option.icon}"></i>` : ''}
+                            <span class="option-text">${option.text}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                questionHTML += `<div class="multi-select-options">`;
+                question.options.forEach((option) => {
+                    const isSelected = selectedOptions[question.id] && selectedOptions[question.id].includes(option.id);
+                    questionHTML += `
+                        <div class="multi-select-option ${isSelected ? 'selected' : ''}" data-option-id="${option.id}">
+                            <div class="checkmark"></div>
+                            ${option.image ? `<img src="${option.image}" alt="${option.text}" class="option-image">` : ''}
+                            <span>${option.text}</span>
+                        </div>
+                    `;
+                });
+                questionHTML += `</div>`;
+            }
+
+            questionHTML += `</div></div>`;
+            questionContainer.innerHTML = questionHTML;
+
+            // إضافة مستمعي الأحداث للخيارات
+            if (question.type === 'single') {
+                document.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+                        answers[question.id] = option.dataset.optionId;
+                        updateNavigationButtons();
+                    });
+                });
+            } else {
+                document.querySelectorAll('.multi-select-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        option.classList.toggle('selected');
+                        
+                        if (!selectedOptions[question.id]) {
+                            selectedOptions[question.id] = [];
+                        }
+                        
+                        const optionIndex = selectedOptions[question.id].indexOf(option.dataset.optionId);
+                        if (optionIndex === -1) {
+                            selectedOptions[question.id].push(option.dataset.optionId);
+                        } else {
+                            selectedOptions[question.id].splice(optionIndex, 1);
+                        }
+                        
+                        updateNavigationButtons();
+                    });
+                });
+            }
+        }
+
+        // تحديث شريط التقدم
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / appData.questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // تحديث أزرار التنقل
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            
+            const question = appData.questions[currentQuestion];
+            let isAnswered = false;
+            
+            if (question.type === 'single') {
+                isAnswered = answers[question.id] !== undefined;
+            } else {
+                isAnswered = selectedOptions[question.id] && selectedOptions[question.id].length > 0;
+            }
+            
+            nextBtn.style.display = currentQuestion < appData.questions.length - 1 ? 'flex' : 'none';
+            submitBtn.style.display = currentQuestion === appData.questions.length - 1 ? 'flex' : 'none';
+            nextBtn.disabled = !isAnswered;
+            submitBtn.disabled = !isAnswered;
+        }
+
+        // الانتقال إلى السؤال التالي
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+            
+            // Scroll to top of question
+            questionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // العودة إلى السؤال السابق
+        function prevQuestion() {
+            currentQuestion--;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+            
+            // Scroll to top of question
+            questionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // إنشاء خطة الرحلة
+        function generateTripPlan() {
+            const tripType = answers['travelers'] || 'solo';
+            const budget = answers['budget'] || 'mid-range';
+            const duration = answers['duration'] || '3-5';
+            const interests = selectedOptions['interests'] || [];
+            const activities = selectedOptions['activities'] || [];
+            
+            // تحديد مدة الرحلة
+            let dayCount = 5;
+            if (duration === '3-5') dayCount = 4;
+            else if (duration === '6-8') dayCount = 7;
+            else if (duration === '9+') dayCount = 10;
+            
+            // تحديد الوجهات بناء على الاهتمامات
+            let selectedDestinations = [];
+            
+            // الوجهات الأساسية
+            selectedDestinations.push('marrakech');
+            
+            // إضافة وجهات بناء على الاهتمامات
+            if (interests.includes('history')) selectedDestinations.push('fes');
+            if (interests.includes('nature') || interests.includes('adventure')) selectedDestinations.push('chefchaouen');
+            if (interests.includes('beach')) selectedDestinations.push('agadir');
+            if (interests.includes('adventure')) selectedDestinations.push('desert');
+            
+            // إذا لم يتم اختيار أي اهتمامات، نضيف وجهات افتراضية
+            if (selectedDestinations.length === 1) {
+                selectedDestinations.push('chefchaouen', 'agadir');
+            }
+            
+            // توزيع الوجهات على الأيام
+            const daysPerDestination = Math.max(1, Math.floor(dayCount / selectedDestinations.length));
+            
+            // إنشاء خطة الرحلة
+            tripPlan = {
+                type: tripType,
+                budget: budget,
+                duration: dayCount,
+                destinations: selectedDestinations,
+                days: [],
+                accommodations: [],
+                restaurants: []
+            };
+            
+            // إنشاء برنامج يومي لكل وجهة
+            let dayNumber = 1;
+            for (const destId of selectedDestinations) {
+                const destination = appData.destinations[destId];
+                
+                for (let i = 0; i < daysPerDestination && dayNumber <= dayCount; i++) {
+                    const day = {
+                        number: dayNumber,
+                        destination: destId,
+                        activities: []
+                    };
+                    
+                    // إضافة أنشطة الصباح
+                    day.activities.push({
+                        time: 'الصباح',
+                        title: `جولة في ${destination.name}`,
+                        description: `استكشف ${destination.highlights[0].name} و${destination.highlights[1].name}. جولة مع مرشد محلي لتعرف أكثر عن تاريخ وثقافة المنطقة.`,
+                        image: destination.highlights[0].image
+                    });
+                    
+                    // إضافة الغداء
+                    const lunchRestaurant = getRandomRestaurant(budget);
+                    day.activities.push({
+                        time: 'الغداء',
+                        title: lunchRestaurant.name,
+                        description: `استمتع بوجبة غداء في ${lunchRestaurant.name} وتذوق الأطباق المحلية الشهية.`,
+                        type: 'food'
+                    });
+                    
+                    // إضافة أنشطة بعد الظهر
+                    let afternoonActivity;
+                    if (activities.includes('hiking')) {
+                        afternoonActivity = `نزهة في ${destId === 'desert' ? 'الكثبان الرملية' : 'المناطق المحيطة'} للتمتع بالمناظر الطبيعية.`;
+                    } else if (activities.includes('photography')) {
+                        afternoonActivity = `جولة تصوير في ${destination.highlights[2].name}، أحد أكثر الأماكن تصويرًا في المنطقة.`;
+                    } else if (activities.includes('spa')) {
+                        afternoonActivity = `وقت للاسترخاء في ${budget === 'luxury' ? 'منتجع صحي فاخر' : 'مقهى محلي هادئ'}.`;
+                    } else {
+                        afternoonActivity = `زيارة ${destination.highlights[2].name} لاكتشاف المزيد من ثقافة المنطقة.`;
+                    }
+                    
+                    day.activities.push({
+                        time: 'بعد الظهر',
+                        title: 'نشاط بعد الظهر',
+                        description: afternoonActivity,
+                        image: destination.highlights[1].image
+                    });
+                    
+                    // إضافة العشاء
+                    const dinnerRestaurant = getRandomRestaurant(budget);
+                    day.activities.push({
+                        time: 'العشاء',
+                        title: dinnerRestaurant.name,
+                        description: `جرب ${budget === 'luxury' ? 'مطعم راقي' : 'مطعم تقليدي'} لتجربة الأطباق المغربية الأصيلة.`,
+                        type: 'food'
+                    });
+                    
+                    // إذا كانت آخر يوم في الوجهة، نضيف نشاط مسائي خاص
+                    if (i === daysPerDestination - 1) {
+                        if (tripType === 'couple') {
+                            day.activities.push({
+                                time: 'المساء',
+                                title: 'غروب الشمس الرومانسي',
+                                description: 'اختتم يومك بمشهد غروب الشمس الرائع مع من تحب.',
+                                type: 'romantic'
+                            });
+                        } else if (tripType === 'family') {
+                            day.activities.push({
+                                time: 'المساء',
+                                title: 'حكايات تقليدية',
+                                description: 'استمتع بحكايات تقليدية مغربية مع العائلة.',
+                                type: 'cultural'
+                            });
+                        }
+                    }
+                    
+                    tripPlan.days.push(day);
+                    dayNumber++;
+                }
+            }
+            
+            // إضافة أماكن الإقامة
+            for (const destId of selectedDestinations) {
+                const accommodation = getRandomAccommodation(destId, budget);
+                tripPlan.accommodations.push({
+                    destination: destId,
+                    name: accommodation.name,
+                    description: accommodation.description,
+                    type: accommodation.type
+                });
+            }
+            
+            return tripPlan;
+        }
+
+        // الحصول على مطعم عشوائي حسب الميزانية
+        function getRandomRestaurant(budget) {
+            const restaurants = appData.restaurants[budget];
+            return restaurants[Math.floor(Math.random() * restaurants.length)];
+        }
+
+        // الحصول على مكان إقامة عشوائي حسب الميزانية
+        function getRandomAccommodation(destination, budget) {
+            const accommodations = appData.accommodations[budget];
+            return accommodations[Math.floor(Math.random() * accommodations.length)];
+        }
+
+        // عرض نتائج الرحلة
+        function displayTripResults() {
+            // عرض ملخص الرحلة
+            let summaryHTML = '';
+            
+            // نوع الرحلة
+            const tripTypeQuestion = appData.questions.find(q => q.id === 'travelers');
+            const tripTypeOption = tripTypeQuestion.options.find(opt => opt.id === tripPlan.type);
+            summaryHTML += `
+                <div class="detail-card">
+                    <h4><i class="fas fa-users"></i> نوع الرحلة</h4>
+                    <p>${tripTypeOption.text}</p>
+                </div>
+            `;
+            
+            // الميزانية
+            const budgetQuestion = appData.questions.find(q => q.id === 'budget');
+            const budgetOption = budgetQuestion.options.find(opt => opt.id === tripPlan.budget);
+            summaryHTML += `
+                <div class="detail-card">
+                    <h4><i class="fas fa-wallet"></i> الميزانية</h4>
+                    <p>${budgetOption.text}</p>
+                </div>
+            `;
+            
+            // المدة
+            const durationQuestion = appData.questions.find(q => q.id === 'duration');
+            const durationOption = durationQuestion.options.find(opt => {
+                if (tripPlan.duration <= 5) return opt.id === '3-5';
+                if (tripPlan.duration <= 8) return opt.id === '6-8';
+                return opt.id === '9+';
+            });
+            summaryHTML += `
+                <div class="detail-card">
+                    <h4><i class="fas fa-calendar-alt"></i> المدة</h4>
+                    <p>${durationOption.text} (${tripPlan.duration} أيام)</p>
+                </div>
+            `;
+            
+            // الوجهات
+            const destinationsText = tripPlan.destinations.map(destId => appData.destinations[destId].name).join('، ');
+            summaryHTML += `
+                <div class="detail-card">
+                    <h4><i class="fas fa-map-marked-alt"></i> الوجهات</h4>
+                    <p>${destinationsText}</p>
+                </div>
+            `;
+            
+            tripSummary.innerHTML = summaryHTML;
+            
+            // عرض البرنامج اليومي
+            let itineraryHTML = '';
+            
+            for (const day of tripPlan.days) {
+                const destination = appData.destinations[day.destination];
+                
+                itineraryHTML += `
+                    <div class="day-card">
+                        <h3>
+                            <span class="day-number">${day.number}</span>
+                            اليوم ${day.number}: ${destination.name}
+                        </h3>
+                        <p>${destination.description}</p>
+                `;
+                
+                for (const activity of day.activities) {
+                    itineraryHTML += `
+                        <div class="activity">
+                            <div class="activity-time">
+                                <div class="time-icon">
+                                    <i class="${getActivityIcon(activity)}"></i>
+                                </div>
+                                ${activity.time}
+                            </div>
+                            <div class="activity-details">
+                                <h4>${activity.title}</h4>
+                                <p>${activity.description}</p>
+                            </div>
+                            ${activity.image ? `<img src="${activity.image}" alt="${activity.title}" class="activity-image">` : ''}
+                        </div>
+                    `;
+                }
+                
+                itineraryHTML += `</div>`;
+            }
+            
+            itinerary.innerHTML += itineraryHTML;
+            
+            // عرض أماكن الإقامة
+            let accommodationsHTML = `
+                <div class="day-card">
+                    <h3><i class="fas fa-hotel"></i> أماكن الإقامة المقترحة</h3>
+            `;
+            
+            for (const accommodation of tripPlan.accommodations) {
+                const destination = appData.destinations[accommodation.destination];
+                accommodationsHTML += `
+                    <div class="activity">
+                        <div class="activity-time">
+                            <div class="time-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            الموقع
+                        </div>
+                        <div class="activity-details">
+                            <h4>${accommodation.name} (${destination.name})</h4>
+                            <p>${accommodation.description}</p>
+                            <p><strong>النوع:</strong> ${accommodation.type}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            accommodationsHTML += `</div>`;
+            itinerary.innerHTML += accommodationsHTML;
+            
+            // عرض الخريطة
+            if (tripPlan.destinations.length > 0) {
+                const firstDest = appData.destinations[tripPlan.destinations[0]];
+                let mapCenter = firstDest.coordinates;
+                
+                if (tripPlan.destinations.length > 1) {
+                    // إذا كانت هناك وجهات متعددة، نضع الخريطة في منتصف الطريق
+                    const coords = tripPlan.destinations.map(destId => {
+                        const coord = appData.destinations[destId].coordinates.split(',');
+                        return { lat: parseFloat(coord[0]), lng: parseFloat(coord[1]) };
+                    });
+                    
+                    const avgLat = coords.reduce((sum, coord) => sum + coord.lat, 0) / coords.length;
+                    const avgLng = coords.reduce((sum, coord) => sum + coord.lng, 0) / coords.length;
+                    mapCenter = `${avgLat},${avgLng}`;
+                }
+                
+                mapIframe.src = `https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${mapCenter}&zoom=7`;
+            }
+            
+            // عرض الموارد المفيدة
+            let resourcesHTML = '';
+            
+            for (const resource of appData.resources) {
+                resourcesHTML += `
+                    <div class="resource-card">
+                        <h4><i class="${resource.icon}"></i> ${resource.title}</h4>
+                        <p>${resource.description}</p>
+                        <a href="${resource.link}">${resource.linkText} <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                `;
+            }
+            
+            resourcesContainer.innerHTML = resourcesHTML;
+            
+            // تحديث الطقس بناء على الوجهات
+            updateWeatherForDestinations();
+        }
+
+        // الحصول على أيقونة النشاط
+        function getActivityIcon(activity) {
+            if (activity.type === 'food') return 'fas fa-utensils';
+            if (activity.type === 'cultural') return 'fas fa-landmark';
+            if (activity.type === 'romantic') return 'fas fa-heart';
+            if (activity.time === 'الصباح') return 'fas fa-sun';
+            if (activity.time === 'بعد الظهر') return 'fas fa-cloud-sun';
+            if (activity.time === 'المساء') return 'fas fa-moon';
+            return 'fas fa-map-marker-alt';
+        }
+
+        // تقديم الاختبار وعرض النتائج
+        function submitQuiz() {
+            // عرض loader
+            loader.style.display = 'flex';
+            quizContainer.style.display = 'none';
+            
+            // تأخير لعرض loader لفترة معقولة
+            setTimeout(() => {
+                // إنشاء خطة الرحلة
+                generateTripPlan();
+                
+                // عرض النتائج
+                displayTripResults();
+                
+                // إخفاء loader وعرض النتائج
+                loader.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                
+                // التمرير إلى أعلى النتائج
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 2000);
+        }
+
+        // تنزيل البرنامج كملف PDF
+        function downloadItinerary() {
+            // في الواقع، هذا يحتاج إلى خدمة من جانب الخادم أو مكتبة مثل jsPDF
+            alert('سيتم تنزيل برنامج رحلتك كملف PDF. في التطبيق الكامل، هذه الميزة تعمل مع مكتبة jsPDF أو خدمة من جانب الخادم.');
+        }
+
+        // مشاركة الرحلة
+        function shareItinerary() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'برنامج رحلتي إلى المغرب',
+                    text: 'اطلع على برنامج رحلتي المخصص إلى المغرب الذي تم إنشاؤه باستخدام Morocco Travel Genius',
+                    url: window.location.href
+                })
+                .catch(err => {
+                    console.error('Error sharing:', err);
+                    alert('يمكنك نسخ الرابط ومشاركته يدويًا.');
+                });
+            } else {
+                alert('يمكنك نسخ الرابط ومشاركته يدويًا.');
+            }
+        }
+
+        // إعادة بدء الاختبار
+        function restartQuiz() {
+            // إعادة تعيين الحالة
+            currentQuestion = 0;
+            answers = {};
+            selectedOptions = {};
+            tripPlan = {};
+            
+            // إخفاء النتائج وإظهار hero section
+            resultsContainer.style.display = 'none';
+            heroSection.style.display = 'flex';
+            
+            // التمرير إلى الأعلى
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // تبديل اللغة
+        function toggleLanguage() {
+            alert('في التطبيق الكامل، هذه الميزة ستقوم بتبديل واجهة المستخدم بين العربية والإنجليزية');
+        }
+
+        // تحديث واجهة الطقس
+        function updateWeatherWidget() {
+            const weatherIcon = weatherWidget.querySelector('.weather-icon');
+            const weatherDetails = weatherWidget.querySelector('.weather-details');
+            
+            // هذه بيانات وهمية، في التطبيق الحقيقي يمكنك استخدام API الطقس
+            const weatherData = {
+                temp: '25°C',
+                condition: 'مشمس',
+                humidity: '45%',
+                wind: '10 كم/س'
+            };
+            
+            weatherIcon.className = 'fas fa-sun weather-icon';
+            weatherDetails.innerHTML = `
+                <span>${weatherData.temp} - ${weatherData.condition}</span>
+                <span>الرطوبة: ${weatherData.humidity}</span>
+                <span>الرياح: ${weatherData.wind}</span>
+            `;
+        }
+
+        // تحديث الطقس بناء على الوجهات المختارة
+        function updateWeatherForDestinations() {
+            // في التطبيق الحقيقي، يمكنك جلب بيانات الطقس لكل وجهة باستخدام API
+            console.log('Updating weather for destinations:', tripPlan.destinations);
+        }
+
+        // Back to top button functionality
+        function toggleBackToTop() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // تهيئة التطبيق عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
